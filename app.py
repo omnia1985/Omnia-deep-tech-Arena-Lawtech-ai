@@ -333,3 +333,35 @@ with col2:
 # ==========================================
 st.markdown("<hr style='border-color: rgba(0,255,136,.2); margin-top: 50px;'>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: #666; font-size: 0.8rem;'>Omnia DeepArena IA © 2026 | Youth Secure Sandbox & GDPR Compliance</p>", unsafe_allow_html=True)
+
+# ══════════════════════════════════════════════════════════════
+# 🏛️ لوحة الحقوق المالية والتضامن (Legal & Financial HUD)
+# ══════════════════════════════════════════════════════════════
+st.markdown("---")
+st.markdown("### 🏛️ الحقوق المالية والامتثال (FIFA Solidarity)")
+
+st.markdown("""
+<div style="background: rgba(255, 170, 0, 0.05); border: 2px solid #ffaa00; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 0 20px rgba(255,170,0,0.2);">
+    <h4 style="color: #ffaa00; margin-top: 0;">⚖️ Omnia LawTech & FinTech Core</h4>
+    <p style="color: #dbe7e1; font-size: 0.95rem;">
+        منصة Omnia تضمن جميع الحقوق المالية والقانونية تلقائياً. نظام آمن ومحمي بموجب قوانين الفيفا والاتحاد الأوروبي (GDPR).
+    </p>
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 15px;">
+        <div style="margin: 10px;">
+            <span style="font-size: 1.5rem;">🤝</span><br>
+            <b style="color:#00ff88;">FIFA Solidarity</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">2.5% Youth Academy Rights</span>
+        </div>
+        <div style="margin: 10px;">
+            <span style="font-size: 1.5rem;">📊</span><br>
+            <b style="color:#00ff88;">Player Equity</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">Tokenized Shares (2.5% Fee)</span>
+        </div>
+        <div style="margin: 10px;">
+            <span style="font-size: 1.5rem;">🛡️</span><br>
+            <b style="color:#00ff88;">GDPR Shield</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">100% Data Protection</span>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
