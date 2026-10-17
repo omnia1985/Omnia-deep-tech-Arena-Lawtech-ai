@@ -237,10 +237,7 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
     if st.button(d['open'], key="btn1"):
-        try:
-            st.switch_page("pages/1_Youth.py")
-        except:
-            st.toast(d['soon'])
+        st.switch_page("pages/1_Youth.py")
 
     # الباقة 3
     st.markdown(f"""
@@ -253,11 +250,8 @@ with col1:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button(d['open'], key="btn3"):
-        try:
-            st.switch_page("pages/3_Scouts.py")
-        except:
-            st.toast(d['soon'])
+    if st.button(d['open'], key="btn1"):
+        st.switch_page("pages/1_Youth.py")
 
 with col2:
     # الباقة 2
@@ -271,11 +265,8 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button(d['open'], key="btn2"):
-        try:
-            st.switch_page("pages/2_Senior.py")
-        except:
-            st.toast(d['soon'])
+        if st.button(d['open'], key="btn1"):
+        st.switch_page("pages/1_Youth.py")
 
     # الباقة 4
     st.markdown(f"""
@@ -288,11 +279,8 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button(d['open'], key="btn4"):
-        try:
-            st.switch_page("pages/4_Amateur.py")
-        except:
-            st.toast(d['soon'])
+        if st.button(d['open'], key="btn1"):
+        st.switch_page("pages/1_Youth.py")
 
 # ══════════════════════════════════════════════════════════════
 # 8) لوحة الحقوق المالية (في الأسفل)
