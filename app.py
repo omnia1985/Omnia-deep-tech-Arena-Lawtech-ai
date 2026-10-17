@@ -73,7 +73,7 @@ footer { visibility: hidden; }
     transform: translateY(-4px); border-color: var(--neon);
     box-shadow: 0 16px 44px rgba(0,255,136,.22);
 }
-.card-img { width: 100%; height: 120px; object-fit: cover; border-radius: 18px 18px 0 0; filter: brightness(.7); }
+.card-img { width: 100%; height: 130px; object-fit: cover; border-radius: 18px 18px 0 0; filter: brightness(.7); }
 .card-body { padding: 15px 20px 20px 20px; }
 .card-title { color: var(--neon); font-weight: 800; font-size: 1.1rem; }
 .card-desc { color: #dbe7e1; font-size: .85rem; line-height: 1.6; margin-top: 6px; }
@@ -106,7 +106,6 @@ LANG_DATA = {
         "sub": "⚽ كل ما يهم كرة القدم — وكرة القدم فقط. تصفح الباقات واللوائح بسهولة.",
         "music": "🎵 الأجواء والموسيقى",
         "open": "🚀 فتح الخدمة",
-        "soon": "🛠️ قيد الإعداد",
         "p1_title": "🥅 باقة الناشئين", "p1_desc": "مجاناً دون 16 سنة بموافقة الولي والـ GDPR.", "p1_price": "20$/ش",
         "p2_title": "👟 باقة اللاعبين الكبار", "p2_desc": "تتبع YOLO26 والجاهزية البدنية الكاملة.", "p2_price": "30$/ش",
         "p3_title": "📡 باقة الكشافين", "p3_desc": "رادار الفرز وقنوات التفاوض المشفرة.", "p3_price": "50$/ش",
@@ -117,7 +116,6 @@ LANG_DATA = {
         "sub": "⚽ Everything that matters in football — and only football.",
         "music": "🎵 Audio HUD & Atmosphere",
         "open": "🚀 Open service",
-        "soon": "🛠️ Coming soon",
         "p1_title": "🥅 Youth Pack", "p1_desc": "Free under 16 with Parental Consent & GDPR.", "p1_price": "$20/Mo",
         "p2_title": "👟 Seniors Pack", "p2_desc": "YOLO26 Kinematic Tracking & Readiness.", "p2_price": "$30/Mo",
         "p3_title": "📡 Scouts Market", "p3_desc": "Ingestion Radar & Encrypted Channels.", "p3_price": "$50/Mo",
@@ -128,7 +126,6 @@ LANG_DATA = {
         "sub": "⚽ Tout ce qui compte pour le football — et rien que le football.",
         "music": "🎵 Ambiance & Audio HUD",
         "open": "🚀 Ouvrir le service",
-        "soon": "🛠️ Bientôt",
         "p1_title": "🥅 Pack Jeunes", "p1_desc": "Gratuit -16 ans avec Consentement & GDPR.", "p1_price": "20$/M",
         "p2_title": "👟 Pack Seniors", "p2_desc": "Suivi YOLO26 & Préparation Physique.", "p2_price": "30$/M",
         "p3_title": "📡 Recruteurs", "p3_desc": "Radar d'Ingestion & Canaux Chiffrés.", "p3_price": "50$/M",
@@ -139,7 +136,6 @@ LANG_DATA = {
         "sub": "⚽ Todo lo que importa en el fútbol — y solo fútbol.",
         "music": "🎵 Audio HUD y Atmósfera",
         "open": "🚀 Abrir servicio",
-        "soon": "🛠️ Próximamente",
         "p1_title": "🥅 Paquete Juvenil", "p1_desc": "Gratis -16 años con Consentimiento & GDPR.", "p1_price": "20$/M",
         "p2_title": "👟 Paquete Seniors", "p2_desc": "YOLO26 y Preparación Física.", "p2_price": "30$/M",
         "p3_title": "📡 Ojeadores", "p3_desc": "Radar y Canales Cifrados.", "p3_price": "50$/M",
@@ -150,7 +146,6 @@ LANG_DATA = {
         "sub": "⚽ Tutto ciò che conta nel calcio — e solo il calcio.",
         "music": "🎵 Audio HUD & Atmosfera",
         "open": "🚀 Apri servizio",
-        "soon": "🛠️ In arrivo",
         "p1_title": "🥅 Giovani", "p1_desc": "Gratis -16 con Consenso & GDPR.", "p1_price": "20$/M",
         "p2_title": "👟 Seniors", "p2_desc": "YOLO26 e Preparazione Fisica.", "p2_price": "30$/M",
         "p3_title": "📡 Scout", "p3_desc": "Radar e Canali Crittografati.", "p3_price": "50$/M",
@@ -161,7 +156,6 @@ LANG_DATA = {
         "sub": "⚽ Tudo o que importa no futebol — e só futebol.",
         "music": "🎵 Áudio HUD & Atmosfera",
         "open": "🚀 Abrir serviço",
-        "soon": "🛠️ Em breve",
         "p1_title": "🥅 Juvenil", "p1_desc": "Grátis -16 com Consentimento & GDPR.", "p1_price": "20$/M",
         "p2_title": "👟 Seniors", "p2_desc": "YOLO26 e Prontidão Física.", "p2_price": "30$/M",
         "p3_title": "📡 Olheiros", "p3_desc": "Radar e Canais Cifrados.", "p3_price": "50$/M",
@@ -220,15 +214,15 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
-# 7) عرض الباقات الأربعة (مع المسارات الصحيحة)
+# 7) عرض الباقات الأربعة (مسافات صحيحة 100%)
 # ══════════════════════════════════════════════════════════════
 col1, col2 = st.columns(2, gap="large")
 
 with col1:
-    # الباقة 1
+    # الباقة 1 (الناشئين) - مع تغبيش الصورة
     st.markdown(f"""
     <div class="glass-card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&q=80">
+        <img class="card-img" src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?w=600&q=80" style="filter: blur(8px);">
         <div class="card-body">
             <div class="card-title">{d['p1_title']}</div>
             <div class="card-desc">{d['p1_desc']}</div>
@@ -239,7 +233,7 @@ with col1:
     if st.button(d['open'], key="btn1"):
         st.switch_page("pages/1_Youth.py")
 
-    # الباقة 3
+    # الباقة 3 (الكشافين)
     st.markdown(f"""
     <div class="glass-card" style="margin-top: 20px;">
         <img class="card-img" src="https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80">
@@ -250,11 +244,11 @@ with col1:
         </div>
     </div>
     """, unsafe_allow_html=True)
-    if st.button(d['open'], key="btn1"):
-        st.switch_page("pages/1_Youth.py")
+    if st.button(d['open'], key="btn3"):
+        st.switch_page("pages/3_Scouts.py")
 
 with col2:
-    # الباقة 2
+    # الباقة 2 (الكبار)
     st.markdown(f"""
     <div class="glass-card">
         <img class="card-img" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80">
@@ -265,10 +259,10 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-        if st.button(d['open'], key="btn1"):
-        st.switch_page("pages/1_Youth.py")
+    if st.button(d['open'], key="btn2"):
+        st.switch_page("pages/2_Senior.py")
 
-    # الباقة 4
+    # الباقة 4 (أندية الهواة)
     st.markdown(f"""
     <div class="glass-card" style="margin-top: 20px;">
         <img class="card-img" src="https://images.unsplash.com/photo-1459865264687-595d652de67e?w=600&q=80">
@@ -279,8 +273,8 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
-        if st.button(d['open'], key="btn1"):
-        st.switch_page("pages/1_Youth.py")
+    if st.button(d['open'], key="btn4"):
+        st.switch_page("pages/4_Amateur.py")
 
 # ══════════════════════════════════════════════════════════════
 # 8) لوحة الحقوق المالية (في الأسفل)
