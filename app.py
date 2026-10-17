@@ -335,32 +335,80 @@ st.markdown("<hr style='border-color: rgba(0,255,136,.2); margin-top: 50px;'>", 
 st.markdown("<p style='text-align: center; color: #666; font-size: 0.8rem;'>Omnia DeepArena IA © 2026 | Youth Secure Sandbox & GDPR Compliance</p>", unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════
-# 🏛️ لوحة الحقوق المالية والتضامن (Legal & Financial HUD)
+# 🏛️ لوحة الحقوق المالية والتضامن (Legal & Financial HUD) - Multilingual
 # ══════════════════════════════════════════════════════════════
-st.markdown("---")
-st.markdown("### 🏛️ الحقوق المالية والامتثال (FIFA Solidarity)")
+LEGAL_TEXTS = {
+    "🇸🇦 العربية": {
+        "title": "الحقوق المالية والامتثال (FIFA Solidarity)",
+        "desc": "منصة Omnia تضمن جميع الحقوق المالية والقانونية تلقائياً. نظام آمن ومحمي بموجب قوانين الفيفا والاتحاد الأوروبي.",
+        "s1": "FIFA Solidarity", "s1d": "2.5% Youth Academy Rights",
+        "s2": "Player Equity", "s2d": "Tokenized Shares (2.5% Fee)",
+        "s3": "GDPR Shield", "s3d": "100% Data Protection"
+    },
+    "🇬🇧 English": {
+        "title": "Financial Rights & Compliance (FIFA Solidarity)",
+        "desc": "Omnia automatically guarantees all financial and legal rights. A secure system protected under FIFA and UEFA laws.",
+        "s1": "FIFA Solidarity", "s1d": "2.5% Youth Academy Rights",
+        "s2": "Player Equity", "s2d": "Tokenized Shares (2.5% Fee)",
+        "s3": "GDPR Shield", "s3d": "100% Data Protection"
+    },
+    "🇫🇷 Français": {
+        "title": "Droits Financiers & Conformité (FIFA Solidarity)",
+        "desc": "Omnia garantit automatiquement tous les droits financiers et juridiques. Un système sécurisé protégé par la FIFA et l'UEFA.",
+        "s1": "Solidarité FIFA", "s1d": "2.5% Droits Académie",
+        "s2": "Équité Joueur", "s2d": "Actions Tokénisées (Frais 2.5%)",
+        "s3": "Bouclier RGPD", "s3d": "100% Protection Données"
+    },
+    "🇪🇸 Español": {
+        "title": "Derechos Financieros y Cumplimiento (FIFA Solidarity)",
+        "desc": "Omnia garantiza automáticamente todos los derechos financieros y legales. Un sistema seguro protegido por las leyes de la FIFA y la UEFA.",
+        "s1": "Solidaridad FIFA", "s1d": "2.5% Derechos Academia",
+        "s2": "Equidad Jugador", "s2d": "Acciones Tokenizadas (Tarifa 2.5%)",
+        "s3": "Escudo GDPR", "s3d": "100% Protección Datos"
+    },
+    "🇮🇹 Italiano": {
+        "title": "Diritti Finanziari e Conformità (FIFA Solidarity)",
+        "desc": "Omnia garantisce automaticamente tutti i diritti finanziari e legali. Un sistema sicuro protetto dalle leggi FIFA e UEFA.",
+        "s1": "Solidarietà FIFA", "s1d": "2.5% Diritti Accademia",
+        "s2": "Equità Giocatore", "s2d": "Azioni Tokenizzate (Tariffa 2.5%)",
+        "s3": "Scudo GDPR", "s3d": "100% Protezione Dati"
+    },
+    "🇵🇹 Português": {
+        "title": "Direitos Financeiros e Conformidade (FIFA Solidarity)",
+        "desc": "A Omnia garante automaticamente todos os direitos financeiros e legais. Um sistema seguro protegido pelas leis da FIFA e da UEFA.",
+        "s1": "Solidariedade FIFA", "s1d": "2.5% Direitos Academia",
+        "s2": "Equidade Jogador", "s2d": "Ações Tokenizadas (Taxa 2.5%)",
+        "s3": "Escudo GDPR", "s3d": "100% Proteção Dados"
+    }
+}
 
-st.markdown("""
+# جلب النص بناءً على اللغة الحالية
+lt = LEGAL_TEXTS.get(lang, LEGAL_TEXTS["🇬🇧 English"])
+
+st.markdown("---")
+st.markdown(f"### 🏛️ {lt['title']}")
+
+st.markdown(f"""
 <div style="background: rgba(255, 170, 0, 0.05); border: 2px solid #ffaa00; border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 0 20px rgba(255,170,0,0.2);">
     <h4 style="color: #ffaa00; margin-top: 0;">⚖️ Omnia LawTech & FinTech Core</h4>
     <p style="color: #dbe7e1; font-size: 0.95rem;">
-        منصة Omnia تضمن جميع الحقوق المالية والقانونية تلقائياً. نظام آمن ومحمي بموجب قوانين الفيفا والاتحاد الأوروبي (GDPR).
+        {lt['desc']}
     </p>
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 15px;">
         <div style="margin: 10px;">
             <span style="font-size: 1.5rem;">🤝</span><br>
-            <b style="color:#00ff88;">FIFA Solidarity</b><br>
-            <span style="color:#aaa; font-size: 0.85rem;">2.5% Youth Academy Rights</span>
+            <b style="color:#00ff88;">{lt['s1']}</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">{lt['s1d']}</span>
         </div>
         <div style="margin: 10px;">
             <span style="font-size: 1.5rem;">📊</span><br>
-            <b style="color:#00ff88;">Player Equity</b><br>
-            <span style="color:#aaa; font-size: 0.85rem;">Tokenized Shares (2.5% Fee)</span>
+            <b style="color:#00ff88;">{lt['s2']}</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">{lt['s2d']}</span>
         </div>
         <div style="margin: 10px;">
             <span style="font-size: 1.5rem;">🛡️</span><br>
-            <b style="color:#00ff88;">GDPR Shield</b><br>
-            <span style="color:#aaa; font-size: 0.85rem;">100% Data Protection</span>
+            <b style="color:#00ff88;">{lt['s3']}</b><br>
+            <span style="color:#aaa; font-size: 0.85rem;">{lt['s3d']}</span>
         </div>
     </div>
 </div>
