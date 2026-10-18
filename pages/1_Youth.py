@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw
 from ultralytics import YOLO
 
 # ═══════════════════════════════════════════════════════════════
-# 1️⃣ إعدادات الصفحة
+# 1️⃣ إعدادات الصفحة والتصميم
 # ═══════════════════════════════════════════════════════════════
 st.set_page_config(layout="wide", page_icon="👶", page_title="Youth Players")
 
@@ -24,75 +24,70 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════
-# 2️⃣ قاموس اللغات (تم التصحيح)
-# ═══════════════════════════════════════════════════════════════
-# ═══════════════════════════════════════════════════════════════
-# 2️⃣ قاموس اللغات الست (شامل)
+# 2️⃣ قاموس اللغات الست (شامل حقل الأكاديمية)
 # ═══════════════════════════════════════════════════════════════
 LANG_YOUTH = {
     "🇸🇦 العربية": {
-        "title": "👶 باقة الناشئين والأطفال", "price": "💰 السعر: 10 دينار (دون 16 سنة) | 20 دينار (16-17 سنة) - يتطلب موافقة الولي والـ GDPR", "age": "العمر اللحظي للناشئ:", "gdpr": "🔒 نظام حماية القصر (دون 18 سنة):", "p_name": "اسم اللاعب:", "g_name": "اسم الولي الشرعي بالكامل:", "g_id": "رقم الهوية أو الإقرار القانوني:", "success": "✅ تم توثيق الموافقة وتفعيل التغبيش الرقمي للوجوه.", "cam": "🎥 البث الحي لكاميرا الهاتف", "upload": "📂 رفع صورة للتحليل", "card_title": "📊 كارت اللاعب (Player Card)", "star_radar": "🔄 رادار التشبيه بالنجوم", "back": "⬅️ العودة إلى الرئيسية", "warn_img": "⚠️ يرجى التقاط صورة لتفعيل الكارت.", "warn_age": "⚠️ عذراً، هذه الباقة مخصصة حتى 17 سنة. يرجى الانتقال لصفحة الأكابر.", "gallery": "🏆 معرض النجوم", "download": "⬇️ تحميل كارت اللاعب", "table_title": "📋 قاعدة بيانات الناشئين (الجدول الموحد)", "select_player": "🔍 اختر لاعباً لعرض كارتة مرة أخرى:", "no_data": "لا توجد بيانات مسجلة بعد. قم بتحليل لاعب لإضافته إلى الجدول.", "position_fw": "مهاجم", "position_mf": "وسط"
+        "title": "👶 باقة الناشئين والأطفال", "price": "💰 السعر: 10 دينار (دون 16 سنة) | 20 دينار (16-17 سنة) - يتطلب موافقة الولي", "age": "العمر اللحظي للناشئ:", "gdpr": "🔒 نظام حماية القصر (دون 18 سنة):", "p_name": "اسم اللاعب:", "club": "الأكاديمية / الجمعية:", "g_name": "اسم الولي الشرعي بالكامل:", "g_id": "رقم الهوية أو الإقرار القانوني:", "success": "✅ تم توثيق الموافقة وتفعيل التغبيش الرقمي.", "cam": "🎥 البث الحي للكاميرا", "upload": "📂 رفع صورة للتحليل", "card_title": "📊 كارت اللاعب (Player Card)", "back": "⬅️ العودة إلى الرئيسية", "warn_age": "⚠️ عذراً، هذه الباقة مخصصة حتى 17 سنة. يرجى الانتقال لصفحة الأكابر.", "gallery": "🏆 معرض النجوم", "download": "⬇️ تحميل كارت اللاعب", "table_title": "📋 قاعدة بيانات الناشئين (الجدول الموحد)", "select_player": "🔍 اختر لاعباً لعرض كارتة مرة أخرى:", "no_data": "لا توجد بيانات مسجلة بعد. قم بتحليل لاعب لإضافته إلى الجدول.", "pos_fw": "مهاجم", "pos_mf": "وسط", "unknown": "غير محدد"
     },
     "🇬🇧 English": {
-        "title": "👶 Youth & Kids Pack", "price": "💰 Price: 10 Dinar (<16) | 20 Dinar (16-17) - Requires Guardian Consent & GDPR", "age": "Current Age:", "gdpr": "🔒 Minor Protection System (<18):", "p_name": "Player Name:", "g_name": "Guardian Full Name:", "g_id": "Guardian ID:", "success": "✅ Consent documented & face masking active.", "cam": "🎥 Live Camera Stream", "upload": "📂 Upload Image", "card_title": "📊 Player Card", "star_radar": "🔄 Star Matching Radar", "back": "⬅️ Back to Home", "warn_img": "⚠️ Please capture an image to activate the card.", "warn_age": "⚠️ Sorry, this pack is up to 17 years. Please go to Seniors page.", "gallery": "🏆 Star Gallery", "download": "⬇️ Download Player Card", "table_title": "📋 Youth Database (Unified Table)", "select_player": "🔍 Select player to view card again:", "no_data": "No data recorded yet. Analyze a player to add to the table.", "position_fw": "Forward", "position_mf": "Midfielder"
+        "title": "👶 Youth & Kids Pack", "price": "💰 Price: 10 Dinar (<16) | 20 Dinar (16-17) - Requires Guardian Consent", "age": "Current Age:", "gdpr": "🔒 Minor Protection System (<18):", "p_name": "Player Name:", "club": "Academy / Club:", "g_name": "Guardian Full Name:", "g_id": "Guardian ID:", "success": "✅ Consent documented & face masking active.", "cam": "🎥 Live Camera Stream", "upload": "📂 Upload Image", "card_title": "📊 Player Card", "back": "⬅️ Back to Home", "warn_age": "⚠️ Sorry, this pack is up to 17 years.", "gallery": "🏆 Star Gallery", "download": "⬇️ Download Player Card", "table_title": "📋 Youth Database (Unified Table)", "select_player": "🔍 Select player to view card again:", "no_data": "No data recorded yet.", "pos_fw": "Forward", "pos_mf": "Midfielder", "unknown": "Unknown"
     },
     "🇫🇷 Français": {
-        "title": "👶 Pack Jeunes & Enfants", "price": "💰 Prix: 10 Dinar (<16) | 20 Dinar (16-17) - Consentement Parental Requis", "age": "Âge Actuel:", "gdpr": "🔒 Protection des Mineurs (<18):", "p_name": "Nom du Joueur:", "g_name": "Nom du Tuteur:", "g_id": "ID du Tuteur:", "success": "✅ Consentement documenté & masquage facial actif.", "cam": "🎥 Caméra Live", "upload": "📂 Télécharger Image", "card_title": "📊 Carte du Joueur", "star_radar": "🔄 Radar de Correspondance", "back": "⬅️ Retour", "warn_img": "⚠️ Veuillez capturer une image.", "warn_age": "⚠️ Désolé, jusqu'à 17 ans.", "gallery": "🏆 Galerie des Stars", "download": "⬇️ Télécharger la Carte", "table_title": "📋 Base de Données", "select_player": "🔍 Sélectionnez un joueur:", "no_data": "Aucune donnée. Analysez un joueur.", "position_fw": "Attaquant", "position_mf": "Milieu"
+        "title": "👶 Pack Jeunes & Enfants", "price": "💰 Prix: 10 Dinar (<16) | 20 Dinar (16-17) - Consentement Requis", "age": "Âge Actuel:", "gdpr": "🔒 Protection des Mineurs (<18):", "p_name": "Nom du Joueur:", "club": "Académie / Club:", "g_name": "Nom du Tuteur:", "g_id": "ID du Tuteur:", "success": "✅ Consentement documenté & masquage actif.", "cam": "🎥 Caméra Live", "upload": "📂 Télécharger Image", "card_title": "📊 Carte du Joueur", "back": "⬅️ Retour", "warn_age": "⚠️ Désolé, jusqu'à 17 ans.", "gallery": "🏆 Galerie des Stars", "download": "⬇️ Télécharger la Carte", "table_title": "📋 Base de Données", "select_player": "🔍 Sélectionnez un joueur:", "no_data": "Aucune donnée.", "pos_fw": "Attaquant", "pos_mf": "Milieu", "unknown": "Inconnu"
     },
     "🇪🇸 Español": {
-        "title": "👶 Paquete Juvenil", "price": "💰 Precio: 10 Dinar (<16) | 20 Dinar (16-17) - Requiere Consentimiento", "age": "Edad Actual:", "gdpr": "🔒 Protección de Menores (<18):", "p_name": "Nombre del Jugador:", "g_name": "Nombre del Tutor:", "g_id": "ID del Tutor:", "success": "✅ Consentimiento documentado & enmascaramiento activo.", "cam": "🎥 Cámara en Vivo", "upload": "📂 Subir Imagen", "card_title": "📊 Carta del Jugador", "star_radar": "🔄 Radar de Estrellas", "back": "⬅️ Volver", "warn_img": "⚠️ Captura una imagen.", "warn_age": "⚠️ Solo hasta 17 años.", "gallery": "🏆 Galería de Estrellas", "download": "⬇️ Descargar Carta", "table_title": "📋 Base de Datos", "select_player": "🔍 Selecciona un jugador:", "no_data": "Sin datos. Analiza un jugador.", "position_fw": "Delantero", "position_mf": "Centrocampista"
+        "title": "👶 Paquete Juvenil", "price": "💰 Precio: 10 Dinar (<16) | 20 Dinar (16-17) - Requiere Consentimiento", "age": "Edad Actual:", "gdpr": "🔒 Protección de Menores (<18):", "p_name": "Nombre del Jugador:", "club": "Academia / Club:", "g_name": "Nombre del Tutor:", "g_id": "ID del Tutor:", "success": "✅ Consentimiento documentado.", "cam": "🎥 Cámara en Vivo", "upload": "📂 Subir Imagen", "card_title": "📊 Carta del Jugador", "back": "⬅️ Volver", "warn_age": "⚠️ Solo hasta 17 años.", "gallery": "🏆 Galería de Estrellas", "download": "⬇️ Descargar Carta", "table_title": "📋 Base de Datos", "select_player": "🔍 Selecciona un jugador:", "no_data": "Sin datos.", "pos_fw": "Delantero", "pos_mf": "Centrocampista", "unknown": "Desconocido"
     },
     "🇮🇹 Italiano": {
-        "title": "👶 Pacchetto Giovani", "price": "💰 Prezzo: 10 Dinar (<16) | 20 Dinar (16-17) - Richiede Consenso", "age": "Età Attuale:", "gdpr": "🔒 Protezione Minori (<18):", "p_name": "Nome Giocatore:", "g_name": "Nome Tutore:", "g_id": "ID Tutore:", "success": "✅ Consenso documentato & mascheramento attivo.", "cam": "🎥 Fotocamera Live", "upload": "📂 Carica Immagine", "card_title": "📊 Carta del Giocatore", "star_radar": "🔄 Radar Stelle", "back": "⬅️ Indietro", "warn_img": "⚠️ Cattura un'immagine.", "warn_age": "⚠️ Fino a 17 anni.", "gallery": "🏆 Galleria Stelle", "download": "⬇️ Scarica Carta", "table_title": "📋 Database", "select_player": "🔍 Seleziona un giocatore:", "no_data": "Nessun dato. Analizza un giocatore.", "position_fw": "Attaccante", "position_mf": "Centrocampista"
+        "title": "👶 Pacchetto Giovani", "price": "💰 Prezzo: 10 Dinar (<16) | 20 Dinar (16-17) - Richiede Consenso", "age": "Età Attuale:", "gdpr": "🔒 Protezione Minori (<18):", "p_name": "Nome Giocatore:", "club": "Accademia / Club:", "g_name": "Nome Tutore:", "g_id": "ID Tutore:", "success": "✅ Consenso documentato.", "cam": "🎥 Fotocamera Live", "upload": "📂 Carica Immagine", "card_title": "📊 Carta del Giocatore", "back": "⬅️ Indietro", "warn_age": "⚠️ Fino a 17 anni.", "gallery": "🏆 Galleria Stelle", "download": "⬇️ Scarica Carta", "table_title": "📋 Database", "select_player": "🔍 Seleziona un giocatore:", "no_data": "Nessun dato.", "pos_fw": "Attaccante", "pos_mf": "Centrocampista", "unknown": "Sconosciuto"
     },
     "🇵🇹 Português": {
-        "title": "👶 Pacote Juvenil", "price": "💰 Preço: 10 Dinar (<16) | 20 Dinar (16-17) - Requer Consentimento", "age": "Idade Atual:", "gdpr": "🔒 Proteção de Menores (<18):", "p_name": "Nome do Jogador:", "g_name": "Nome do Tutor:", "g_id": "ID do Tutor:", "success": "✅ Consentimento documentado & mascaramento ativo.", "cam": "🎥 Câmara ao Vivo", "upload": "📂 Carregar Imagem", "card_title": "📊 Cartão do Jogador", "star_radar": "🔄 Radar de Estrelas", "back": "⬅️ Voltar", "warn_img": "⚠️ Capture uma imagem.", "warn_age": "⚠️ Até 17 anos.", "gallery": "🏆 Galeria de Estrelas", "download": "⬇️ Baixar Cartão", "table_title": "📋 Banco de Dados", "select_player": "🔍 Selecione um jogador:", "no_data": "Sem dados. Analise um jogador.", "position_fw": "Avançado", "position_mf": "Médio"
+        "title": "👶 Pacote Juvenil", "price": "💰 Preço: 10 Dinar (<16) | 20 Dinar (16-17) - Requer Consentimento", "age": "Idade Atual:", "gdpr": "🔒 Proteção de Menores (<18):", "p_name": "Nome do Jogador:", "club": "Academia / Clube:", "g_name": "Nome do Tutor:", "g_id": "ID do Tutor:", "success": "✅ Consentimento documentado.", "cam": "🎥 Câmara ao Vivo", "upload": "📂 Carregar Imagem", "card_title": "📊 Cartão do Jogador", "back": "⬅️ Voltar", "warn_age": "⚠️ Até 17 anos.", "gallery": "🏆 Galeria de Estrelas", "download": "⬇️ Baixar Cartão", "table_title": "📋 Banco de Dados", "select_player": "🔍 Selecione um jogador:", "no_data": "Sem dados.", "pos_fw": "Avançado", "pos_mf": "Médio", "unknown": "Desconhecido"
     }
 }
-# جلب اللغة الافتراضية
+
 sel_lang = st.session_state.get("lang", "🇸🇦 العربية")
-d = LANG_YOUTH.get(sel_lang, LANG_YOUTH["🇬🇧 English"]) # Fallback to English if lang not found
+d = LANG_YOUTH.get(sel_lang, LANG_YOUTH["🇬🇧 English"])
 
 st.error(d["price"])
 st.title(d["title"])
 st.write("---")
 
 # ═══════════════════════════════════════════════════════════════
-# 3️⃣ التحقق من العمر والحماية
+# 3️⃣ التحقق من العمر
 # ═══════════════════════════════════════════════════════════════
 age = st.number_input(d["age"], min_value=5, max_value=25, value=15)
 
 if age >= 18:
     st.warning(d["warn_age"])
-    st.stop() # إيقاف تحميل باقي الصفحة
+    st.stop()
 
 parent_agree = False
 if age < 18:
     st.info(d["gdpr"])
     p_name = st.text_input(d["p_name"], key="p_name")
+    p_club = st.text_input(d["club"], key="p_club") # حقل الأكاديمية الجديد
     g_name = st.text_input(d["g_name"], key="g_name")
     g_id = st.text_input(d["g_id"], key="g_id")
-    if p_name and g_name and g_id:
+    if p_name and p_club and g_name and g_id:
         parent_agree = True
         st.success(d["success"])
 
 # ═══════════════════════════════════════════════════════════════
-# 4️⃣ دوال توليد الصور (Pillow)
+# 4️⃣ دوال التوليد
 # ═══════════════════════════════════════════════════════════════
-def generate_download_card(player_img_bytes, name, age, speed, star_name, match_pct):
+def generate_download_card(player_img_bytes, name, age, speed, star_name, match_pct, club):
     try:
         img = Image.open(io.BytesIO(player_img_bytes)).convert("RGB")
         img = img.resize((400, 400))
-        
         card = Image.new("RGB", (800, 500), color=(4, 10, 24))
         draw = ImageDraw.Draw(card)
-        
-        # لصق الصورة
         card.paste(img, (50, 50))
         
-        # النصوص
-        draw.text((500, 100), f"Name: {name}", fill=(0, 255, 136))
-        draw.text((500, 150), f"Age: {age}", fill=(255, 255, 255))
+        draw.text((500, 80), f"Name: {name}", fill=(0, 255, 136))
+        draw.text((500, 120), f"Club: {club}", fill=(200, 200, 200))
+        draw.text((500, 160), f"Age: {age}", fill=(255, 255, 255))
         draw.text((500, 200), f"Speed: {speed} km/h", fill=(255, 255, 255))
         draw.text((500, 250), f"Star Match: {star_name}", fill=(0, 212, 255))
         draw.text((500, 300), f"Similarity: {match_pct}%", fill=(255, 170, 0))
@@ -100,12 +95,9 @@ def generate_download_card(player_img_bytes, name, age, speed, star_name, match_
         buf = io.BytesIO()
         card.save(buf, format="PNG")
         return buf.getvalue()
-    except Exception as e:
+    except:
         return None
 
-# ═══════════════════════════════════════════════════════════════
-# 5️⃣ محرك YOLO26
-# ═══════════════════════════════════════════════════════════════
 @st.cache_resource(show_spinner=False)
 def load_yolo_model():
     try:
@@ -121,12 +113,10 @@ async def yolo_engine(frame_bytes, model):
     
     results = model(frame, verbose=False)
     annotated = frame.copy()
-    
     if results and len(results) > 0:
         r = results[0]
         if r.keypoints is not None and len(r.keypoints) > 0:
             for idx, kps in enumerate(r.keypoints.xy.cpu().numpy()):
-                # التغبيش
                 face = kps[:5]
                 valid = face[face.sum(axis=1) > 0]
                 if len(valid) >= 2:
@@ -139,10 +129,9 @@ async def yolo_engine(frame_bytes, model):
     return annotated
 
 # ═══════════════════════════════════════════════════════════════
-# 6️⃣ واجهة المستخدم وعرض الكارت
+# 5️⃣ واجهة المستخدم
 # ═══════════════════════════════════════════════════════════════
 if parent_agree:
-    # تهيئة قاعدة البيانات المحلية
     if 'youth_db' not in st.session_state:
         st.session_state.youth_db = []
 
@@ -161,15 +150,12 @@ if parent_agree:
                 processed = asyncio.run(yolo_engine(data, model))
                 
             if processed is not None:
-                # عرض الصورة المحللة
                 processed_rgb = cv2.cvtColor(processed, cv2.COLOR_BGR2RGB)
                 st.image(processed_rgb, channels="RGB", use_container_width=True)
-                
                 st.write("---")
                 
-                # بيانات وهمية للتجربة
                 speed = 24 + (age % 5) 
-                pos = d["position_fw"] if age % 2 == 0 else d["position_mf"]
+                pos = d["pos_fw"] if age % 2 == 0 else d["pos_mf"]
                 
                 stars = ["Lamine Yamal", "Gavi", "Endrick", "Pedri"]
                 matched_star = stars[age % 4]
@@ -180,6 +166,7 @@ if parent_agree:
                 st.markdown(f"""
                 <div class="player-card-ui">
                     <h2 style="color:#00ff88; margin-bottom:5px;">{p_name}</h2>
+                    <h4 style="color:#00d4ff; margin-top:0; margin-bottom:5px;">{p_club}</h4>
                     <p style="color:#aaa; margin-top:0;">{pos} | {age}</p>
                     <div style="display:flex; justify-content:space-around; margin-top:15px;">
                         <div><h3 style="color:#fff; margin:0;">{speed}</h3><span style="color:#888; font-size:12px;">km/h</span></div>
@@ -190,25 +177,18 @@ if parent_agree:
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # ═══ زر التحميل ═══
-                img_bytes = generate_download_card(data, p_name, age, speed, matched_star, match_pct)
+                img_bytes = generate_download_card(data, p_name, age, speed, matched_star, match_pct, p_club)
                 if img_bytes:
-                    st.download_button(
-                        label=d["download"], 
-                        data=img_bytes, 
-                        file_name=f"{p_name}_card.png", 
-                        mime="image/png",
-                        use_container_width=True
-                    )
+                    st.download_button(label=d["download"], data=img_bytes, file_name=f"{p_name}_card.png", mime="image/png", use_container_width=True)
 
-                # إضافة اللاعب إلى الجدول (مرة واحدة فقط عند التحليل)
+                # إضافة اللاعب إلى الجدول (مع منع التكرار)
                 if not any(p["Name"] == p_name for p in st.session_state.youth_db):
                     st.session_state.youth_db.append({
-                        "Name": p_name, "Age": age, "Position": pos, "Speed": speed, "Match": matched_star, 
+                        "Name": p_name, "Club": p_club, "Age": age, "Position": pos, "Speed": speed, "Match": matched_star, 
                         "img_bytes": img_bytes, "match_pct": match_pct
                     })
 
-    # ═══ معرض النجوم ═══
+    # ═══ معرض النجوم (روابط ثابتة مع صورة احتياطية) ═══
     st.write("---")
     st.subheader(d["gallery"])
     star_images = {
@@ -217,33 +197,38 @@ if parent_agree:
         "Endrick": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Endrick_2023_%28cropped%29.jpg/240px-Endrick_2023_%28cropped%29.jpg",
         "Pedri": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Pedri_2021_%28cropped%29.jpg/240px-Pedri_2021_%28cropped%29.jpg"
     }
+    
     st.markdown('<div class="star-gallery">', unsafe_allow_html=True)
     for name, img_url in star_images.items():
-        st.markdown(f'<div class="star-item"><img src="{img_url}"><br><span style="font-size:12px; color:#fff;">{name}</span></div>', unsafe_allow_html=True)
+        # تم استخدام onerror لوضع صورة كرة قدم إذا فشل الرابط الأساسي
+        st.markdown(f'''
+            <div class="star-item">
+                <img src="{img_url}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/53/53283.png';">
+                <br><span style="font-size:12px; color:#fff;">{name}</span>
+            </div>
+        ''', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # ═══ الجدول الموحد (قاعدة البيانات المصغرة) ═══
+    # ═══ الجدول الموحد ═══
     st.write("---")
     st.subheader(d["table_title"])
     
     if st.session_state.youth_db:
         df = pd.DataFrame(st.session_state.youth_db)
-        # إخفاء عمود الصورة من الجدول
         st.dataframe(df.drop(columns=["img_bytes", "match_pct"], errors="ignore"), use_container_width=True, hide_index=True)
         
         st.write("---")
         st.subheader(d["select_player"])
-        
         player_names = [p["Name"] for p in st.session_state.youth_db]
         selected_player_name = st.selectbox("", ["-- Select --"] + player_names, label_visibility="collapsed")
         
         if selected_player_name != "-- Select --":
             player_data = next((p for p in st.session_state.youth_db if p["Name"] == selected_player_name), None)
-            
             if player_data:
                 st.markdown(f"""
                 <div class="player-card-ui">
                     <h2 style="color:#00ff88; margin-bottom:5px;">{player_data["Name"]}</h2>
+                    <h4 style="color:#00d4ff; margin-top:0; margin-bottom:5px;">{player_data.get("Club", "Unknown")}</h4>
                     <p style="color:#aaa; margin-top:0;">{player_data["Position"]} | {player_data["Age"]}</p>
                     <div style="display:flex; justify-content:space-around; margin-top:15px;">
                         <div><h3 style="color:#fff; margin:0;">{player_data["Speed"]}</h3><span style="color:#888; font-size:12px;">km/h</span></div>
@@ -255,19 +240,12 @@ if parent_agree:
                 """, unsafe_allow_html=True)
                 
                 if "img_bytes" in player_data and player_data["img_bytes"]:
-                    st.download_button(
-                        label=d["download"], 
-                        data=player_data["img_bytes"], 
-                        file_name=f"{player_data['Name']}_card.png", 
-                        mime="image/png",
-                        use_container_width=True,
-                        key=f"dl_{player_data['Name']}"
-                    )
+                    st.download_button(label=d["download"], data=player_data["img_bytes"], file_name=f"{player_data['Name']}_card.png", mime="image/png", use_container_width=True, key=f"dl_{player_data['Name']}")
     else:
         st.info(d["no_data"])
 
 # ═══════════════════════════════════════════════════════════════
-# 7️⃣ زر العودة
+# 6️⃣ زر العودة
 # ═══════════════════════════════════════════════════════════════
 st.write("---")
 if st.button(d["back"], use_container_width=True):
