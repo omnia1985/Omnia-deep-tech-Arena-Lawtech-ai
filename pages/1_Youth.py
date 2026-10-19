@@ -175,12 +175,32 @@ if parent_agree:
                 img_bytes = generate_download_card(data, p_name, age, speed, matched_star, match_pct, p_club)
                 if img_bytes:
                     st.download_button(label=d["download"], data=img_bytes, file_name=f"{p_name}_card.png", mime="image/png", use_container_width=True)
-
                 if not any(p["Name"] == p_name for p in st.session_state.youth_db):
                     st.session_state.youth_db.append({
                         "Name": p_name, "Club": p_club, "Age": age, "Position": pos, "Speed": speed, "Match": matched_star, 
                         "img_bytes": img_bytes, "match_pct": match_pct
                     })
+                    
+                    # ☁️ الحفظ في السحابة (Supabase)
+                    try:
+                        url = st.secrets["SUPABASE_URL"]
+                        key = st.secrets["SUPABASE_KEY"]
+                        supabase: Client = create_client(url, key)
+                        
+                        data_to_insert = {
+                            "name": p_name,
+                            "club": p_club,
+                            "age": int(age),
+                            "position": pos,
+                            "speed": float(speed),
+                            "match_pct": int(match_pct),
+                            "star_name": matched_star
+                        }
+                        
+                        supabase.table("youth_players").insert(data_to_insert).execute()
+                        st.toast("☁️ تم حفظ بيانات اللاعب في السحابة بنجاح!", icon="✅")
+                    except Exception as e:
+                        st.error(f"⚠️ خطأ في الحفظ بالسحابة: {e}")
     # ═══ معرض النجوم (روابط مباشرة عبر بروكسي مضمون 100%) ═══
     st.write("---")
     st.subheader(d["gallery"])
