@@ -181,24 +181,23 @@ if parent_agree:
                         "Name": p_name, "Club": p_club, "Age": age, "Position": pos, "Speed": speed, "Match": matched_star, 
                         "img_bytes": img_bytes, "match_pct": match_pct
                     })
-
-    # ═══ معرض النجوم (تم إضافة width=300 لضمان الظهور) ═══
+    # ═══ معرض النجوم (روابط مباشرة عبر بروكسي مضمون 100%) ═══
     st.write("---")
     st.subheader(d["gallery"])
+    
+    # استخدمنا wsrv.nl كوسيط لجلب صور حقيقية عالية الجودة من Transfermarkt
     star_images = {
-        "Lamine Yamal": "https://commons.wikimedia.org/wiki/Special:FilePath/Lamine_Yamal_2023.jpg?width=300",
-        "Gavi": "https://commons.wikimedia.org/wiki/Special:FilePath/Pablo_Mart%C3%ADn_P%C3%A1ez_Gavi_2022.jpg?width=300",
-        "Endrick": "https://commons.wikimedia.org/wiki/Special:FilePath/Endrick_2023_%28cropped%29.jpg?width=300",
-        "Pedri": "https://commons.wikimedia.org/wiki/Special:FilePath/Pedri_2021_%28cropped%29.jpg?width=300"
+        "Lamine Yamal": "https://wsrv.nl/?url=img.a.transfermarkt.technology/portrait/big/937958-1704735153.png",
+        "Gavi": "https://wsrv.nl/?url=img.a.transfermarkt.technology/portrait/big/646740-1673605512.jpg",
+        "Endrick": "https://wsrv.nl/?url=img.a.transfermarkt.technology/portrait/big/971570-1704880838.jpg",
+        "Pedri": "https://wsrv.nl/?url=img.a.transfermarkt.technology/portrait/big/683840-1622116117.jpg"
     }
     
-    star_cols = st.columns(4)
+    cols = st.columns(4)
     for idx, (name, img_url) in enumerate(star_images.items()):
-        with star_cols[idx]:
-            try:
-                st.image(img_url, caption=name, use_container_width=True)
-            except Exception:
-                st.info(f"Image: {name}")
+        with cols[idx % 4]:
+            # عرض الصورة
+            st.image(img_url, caption=name, use_container_width=True)
 
     # ═══ الجدول الموحد ═══
     st.write("---")
