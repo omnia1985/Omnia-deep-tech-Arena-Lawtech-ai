@@ -1,4 +1,4 @@
-from supabase import create_client, Clientimport streamlit as st
+import streamlit as st
 import asyncio
 import numpy as np
 import cv2
@@ -6,6 +6,7 @@ import pandas as pd
 import io
 from PIL import Image, ImageDraw
 from ultralytics import YOLO
+from supabase import create_client, Client
 
 # ═══════════════════════════════════════════════════════════════
 # 1️⃣ إعدادات الصفحة والتصميم
