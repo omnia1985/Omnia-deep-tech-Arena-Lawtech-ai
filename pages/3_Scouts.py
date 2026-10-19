@@ -207,3 +207,6 @@ else:
 st.write("---")
 if st.button(d[18], use_container_width=True):
     st.switch_page("app.py")
+st.write("---")
+if st.button("⬅️ العودة إلى الرئيسية (Back to Home)", use_container_width=True):
+    st.switch_page("app.py")
